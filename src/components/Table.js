@@ -57,7 +57,10 @@ export default class Table extends Component {
                 document.getElementById('investinput').value=''
                 document.getElementById('investinput').disabled=true
                 document.getElementById('investbtn').disabled=true
-                document.getElementById('sellbtn').disabled=false
+                setInterval(function(){
+                    document.getElementById('sellbtn').disabled=false
+                }, 15*60*1000)
+                
                 alert('You invested in '+ this.state.selectedStock.title)
                 document.getElementById('investdetails').style={display: 'block'}
             }else{
