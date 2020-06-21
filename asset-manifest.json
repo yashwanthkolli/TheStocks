@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/TheStocks/static/css/main.a7ac9d91.chunk.css",
+    "main.js": "/TheStocks/static/js/main.27d191bf.chunk.js",
+    "main.js.map": "/TheStocks/static/js/main.27d191bf.chunk.js.map",
+    "runtime-main.js": "/TheStocks/static/js/runtime-main.4f362ff7.js",
+    "runtime-main.js.map": "/TheStocks/static/js/runtime-main.4f362ff7.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/TheStocks/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.eb31af32.chunk.js": "/TheStocks/static/js/2.eb31af32.chunk.js",
+    "static/js/2.eb31af32.chunk.js.map": "/TheStocks/static/js/2.eb31af32.chunk.js.map",
+    "index.html": "/TheStocks/index.html",
+    "precache-manifest.55a0ff54f96af943af62a4162eac4470.js": "/TheStocks/precache-manifest.55a0ff54f96af943af62a4162eac4470.js",
+    "service-worker.js": "/TheStocks/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/TheStocks/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.a7ac9d91.chunk.css.map": "/TheStocks/static/css/main.a7ac9d91.chunk.css.map",
+    "static/js/2.eb31af32.chunk.js.LICENSE.txt": "/TheStocks/static/js/2.eb31af32.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4f362ff7.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.eb31af32.chunk.js",
+    "static/css/main.a7ac9d91.chunk.css",
+    "static/js/main.27d191bf.chunk.js"
+  ]
+}
