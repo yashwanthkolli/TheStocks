@@ -29,11 +29,6 @@ body{
 .card-title{
 	color: #f8d229 !important;
 }
-.Myport{
-	height: 35%
-}
-
-.Timer{
-    height: 20%;
-    color: white !important;
+.card{
+    height: fit-content;
 }

@@ -14,6 +14,7 @@ export default class Table extends Component {
             selectedStock: {},
             investamt: null,
             investedStock: {},
+            time: 120
         }
     }
     componentDidMount(){
@@ -45,6 +46,7 @@ export default class Table extends Component {
         }
     }
     investclicked = () => {
+        const {time} = this.state
         var confirmation=window.confirm("Do You Want To Invest Here?")
         if(confirmation===true){
             if(this.state.investamt>0){
@@ -61,11 +63,28 @@ export default class Table extends Component {
                 document.getElementById('timer').style={display: 'block'}
                 setTimeout(function(){
                     document.getElementById('sellbtn').disabled=false
-                }, 60000)
-                var i=60
+                }, time*1000)
+                var i=time
+                var sec = i%60;
+                var min = (i-sec)/60;
                 setInterval(function(){
-                    i>0 ? i=i-1 : i=0;
-                    i>9 ? document.getElementById('time').textContent=i : document.getElementById('time').textContent='0'+i
+                    if(sec>0){
+                        sec=sec-1
+                    }else{
+                        if(min>0){
+                            min=min-1
+                            sec=59
+                        }else{
+                            min=0
+                            if(sec>0){
+                                sec=sec
+                            }else{
+                                sec=0
+                            }
+                        }
+                    }
+                    sec>9 ? document.getElementById('sec').textContent=sec : document.getElementById('sec').textContent='0'+sec
+                    min>9 ? document.getElementById('min').textContent=min : document.getElementById('min').textContent='0'+min
                 }, 1000)
                 alert('You invested in '+ this.state.selectedStock.title)
                 document.getElementById('investdetails').style={display: 'block'}
@@ -86,7 +105,7 @@ export default class Table extends Component {
                 }
             })
             document.getElementById('sellbtn').disabled=true 
-            this.setState({investedStock: {}, investamt: null})
+            // this.setState({investedStock: {}, investamt: null})
         } else{
             alert('Cancelled')
         }  
