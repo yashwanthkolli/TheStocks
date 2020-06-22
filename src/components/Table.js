@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Stockdetail } from './Stockdetail';
 import { MyPort } from './Myportfolio';
 import{ db } from '../firebase/firebase.utils'
+import { Timer } from './Timer';
 
 export default class Table extends Component {
     constructor(){
@@ -12,7 +13,7 @@ export default class Table extends Component {
             capital: 10000,
             selectedStock: {},
             investamt: null,
-            investedStock: {}
+            investedStock: {},
         }
     }
     componentDidMount(){
@@ -57,9 +58,15 @@ export default class Table extends Component {
                 document.getElementById('investinput').value=''
                 document.getElementById('investinput').disabled=true
                 document.getElementById('investbtn').disabled=true
-                setInterval(function(){
+                document.getElementById('timer').style={display: 'block'}
+                setTimeout(function(){
                     document.getElementById('sellbtn').disabled=false
-                }, 900000)
+                }, 60000)
+                var i=60
+                setInterval(function(){
+                    i>0 ? i=i-1 : i=0;
+                    i>9 ? document.getElementById('time').textContent=i : document.getElementById('time').textContent='0'+i
+                }, 1000)
                 alert('You invested in '+ this.state.selectedStock.title)
                 document.getElementById('investdetails').style={display: 'block'}
             }else{
@@ -79,6 +86,7 @@ export default class Table extends Component {
                 }
             })
             document.getElementById('sellbtn').disabled=true 
+            this.setState({investedStock: {}, investamt: null})
         } else{
             alert('Cancelled')
         }  
@@ -107,8 +115,13 @@ export default class Table extends Component {
                             <button id='sellbtn' className='btn btn-warning btn-sm investdetails' onClick={this.sellclicked}>Sell</button>
                         </div>
                     </div>
-                    <div className="card col-md-2 mx-auto mb-3 bg-dark" >
-                        <MyPort capital={this.state.capital} investedStock={this.state.investedStock} investamt={this.state.investamt} />
+                    <div className="col-md-2 mx-auto mb-3 row" >
+                        <div className='card row  bg-dark Myport'>
+                            <MyPort capital={this.state.capital} investedStock={this.state.investedStock} investamt={this.state.investamt} />
+                        </div>
+                        <div className='card row  bg-dark Timer'>
+                            <Timer time={this.state.timer}/>
+                        </div>
                     </div>
                 </div>
             </div>
