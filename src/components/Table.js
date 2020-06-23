@@ -14,10 +14,11 @@ export default class Table extends Component {
             selectedStock: {},
             investamt: null,
             investedStock: {},
-            time: 120
+            time: 10
         }
     }
     componentDidMount(){
+    document.getElementById('sellbtn').disabled=true
     db.collection('stocks')
         .get()
         .then( snapshot => {
@@ -34,7 +35,6 @@ export default class Table extends Component {
         this.forceUpdate()
         this.state.selectedStockId=e.target.id
         this.state.selectedStock=this.state.stocks[e.target.id-1]
-        document.getElementById('sellbtn').disabled=true
         document.getElementById('selectedstockdetails').style={display: 'block'}
     }
     investamtchanged = (e) => {
