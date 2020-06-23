@@ -14,7 +14,7 @@ export default class Table extends Component {
             selectedStock: {},
             investamt: null,
             investedStock: {},
-            time: 10
+            time: 60
         }
     }
     componentDidMount(){
