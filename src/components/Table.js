@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { Stockdetail } from './Stockdetail';
 import { MyPort } from './Myportfolio';
 import{ db } from '../firebase/firebase.utils'
@@ -17,6 +18,7 @@ export default class Table extends Component {
             time: 60
         }
     }
+
     componentDidMount(){
     document.getElementById('sellbtn').disabled=true
     db.collection('stocks')
@@ -31,12 +33,14 @@ export default class Table extends Component {
         })
         .catch( error => console.log(error))
     }
+
     stockclicked = (e) => {
         this.forceUpdate()
         this.state.selectedStockId=e.target.id
         this.state.selectedStock=this.state.stocks[e.target.id-1]
         document.getElementById('selectedstockdetails').style={display: 'block'}
     }
+
     investamtchanged = (e) => {
         if(e.target.value<=this.state.capital){
             this.setState({investamt: e.target.value})
@@ -45,6 +49,7 @@ export default class Table extends Component {
             e.target.value=this.state.investamt
         }
     }
+
     investclicked = () => {
         const {time} = this.state
         var confirmation=window.confirm("Do You Want To Invest Here?")
@@ -77,7 +82,6 @@ export default class Table extends Component {
                         }else{
                             min=0
                             if(sec>0){
-                                sec=sec
                             }else{
                                 sec=0
                             }
@@ -95,6 +99,7 @@ export default class Table extends Component {
             alert("Cancelled")
         }
     }
+
     sellclicked = () => {
         var confirmation=window.confirm("Do You Want To Sell?")
         if(confirmation===true){
@@ -110,16 +115,19 @@ export default class Table extends Component {
             alert('Cancelled')
         }  
     }
+    
     render() {
         return (
             <div>
                 <div className='row'>
                     <div className='col-md-2 mx-auto'>
                         <table className='table table-dark'>
-                            <tr>
-                                <th>#</th>
-                                <th>Markets</th>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Markets</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {this.state.stocks.map(stock => <tr key={stock.id}><td>{stock.id}</td><td className='stocktable' id={stock.id} onClick={this.stockclicked}>{stock.title}</td></tr>)}
                             </tbody>
